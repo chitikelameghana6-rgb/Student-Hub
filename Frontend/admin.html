@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>Student Hub - Admin Dashboard</title>
+
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+<link
+    rel="stylesheet"
+    href="./admin.css">
+
+
+</head>
+
+<body>
+
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-brand">
+
+        <div class="brand-icon">
+            S
+        </div>
+
+        <div>
+            <h4>Student Hub</h4>
+            <small>Admin Panel</small>
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-menu">
+
+        <a
+            href="#dashboard"
+            class="menu-item active">
+
+            <span>📊</span>
+            Dashboard
+
+        </a>
+
+
+        <a
+            href="#resources"
+            class="menu-item">
+
+            <span>📚</span>
+            Resources
+
+        </a>
+
+
+        <a
+            href="#upload"
+            class="menu-item">
+
+            <span>⬆️</span>
+            Upload Resource
+
+        </a>
+
+
+        <a
+            href="#pending"
+            class="menu-item">
+
+            <span>⏳</span>
+            Pending
+
+            <span
+                id="sidebarPendingCount"
+                class="menu-badge">
+
+                0
+
+            </span>
+
+        </a>
+
+
+        <a
+            href="#approved"
+            class="menu-item">
+
+            <span>✅</span>
+            Approved
+
+        </a>
+
+
+        <a
+            href="#rejected"
+            class="menu-item">
+
+            <span>❌</span>
+            Rejected
+
+        </a>
+
+
+        <a
+            href="#ratings"
+            class="menu-item">
+
+            <span>⭐</span>
+            Ratings
+
+        </a>
+
+
+        <a
+            href="#users"
+            class="menu-item">
+
+            <span>👥</span>
+            Users
+
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-footer">
+
+        <button
+            id="logoutBtn"
+            class="logout-btn">
+
+            <span>🚪</span>
+            Logout
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- Main Content -->
+
+<div class="main-content">
+
+
+    <!-- Top Navbar -->
+
+    <header class="topbar">
+
+        <div>
+
+            <h2>
+                Admin Dashboard
+            </h2>
+
+            <p>
+                Manage Student Hub from one place
+            </p>
+
+        </div>
+
+
+        <div class="admin-user">
+
+            <div class="admin-avatar">
+                A
+            </div>
+
+            <div>
+
+                <strong>
+                    Administrator
+                </strong>
+
+                <small>
+                    Admin
+                </small>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- Dashboard -->
+
+    <main class="dashboard-container">
+
+
+        <!-- Dashboard Overview -->
+
+        <section
+            id="dashboard"
+            class="dashboard-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h3>
+                        Dashboard Overview
+                    </h3>
+
+                    <p>
+                        Monitor resources and platform activity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Statistics -->
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Total Resources
+                        </span>
+
+                        <h2 id="totalResources">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        ⏳
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Pending
+                        </span>
+
+                        <h2 id="totalPending">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Approved
+                        </span>
+
+                        <h2 id="totalApproved">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon red">
+                        ❌
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Rejected
+                        </span>
+
+                        <h2 id="totalRejected">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- Resources -->
+
+        <section
+            id="resources"
+            class="dashboard-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h3>
+                        📚 Resource Management
+                    </h3>
+
+                    <p>
+                        Manage resources shared by students.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="resource-toolbar">
+
+                <input
+                    type="text"
+                    id="resourceSearch"
+                    class="form-control"
+                    placeholder="Search resources...">
+
+
+                <select
+                    id="resourceStatusFilter"
+                    class="form-select">
+
+                    <option value="">
+                        All Status
+                    </option>
+
+                    <option value="pending">
+                        Pending
+                    </option>
+
+                    <option value="approved">
+                        Approved
+                    </option>
+
+                    <option value="rejected">
+                        Rejected
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- Upload Resource -->
+
+        <section
+            id="upload"
+            class="dashboard-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h3>
+                        ⬆️ Upload Resource
+                    </h3>
+
+                    <p>
+                        Admin can upload notes and study materials.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="adminUploadForm">
+
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Resource Title
+                        </label>
+
+                        <input
+                            type="text"
+                            id="adminTitle"
+                            class="form-control"
+                            placeholder="Enter resource title"
+                            required>
+
+                    </div>
+
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Subject
+                        </label>
+
+                        <input
+                            type="text"
+                            id="adminSubject"
+                            class="form-control"
+                            placeholder="Enter subject"
+                            required>
+
+                    </div>
+
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Category
+                        </label>
+
+                        <select
+                            id="adminCategory"
+                            class="form-select"
+                            required>
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <option value="Notes">
+                                Notes
+                            </option>
+
+                            <option value="PPT">
+                                PPT
+                            </option>
+
+                            <option value="Question Papers">
+                                Question Papers
+                            </option>
+
+                            <option value="Study Material">
+                                Study Material
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Resource File
+                        </label>
+
+                        <input
+                            type="file"
+                            id="adminFile"
+                            class="form-control"
+                            accept=".pdf,.ppt,.pptx,.png,.jpg,.jpeg"
+                            required>
+
+                    </div>
+
+
+
+                    <div class="col-12">
+
+                        <label class="form-label">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="adminDescription"
+                            class="form-control"
+                            rows="4"
+                            placeholder="Enter resource description"></textarea>
+
+                    </div>
+
+
+
+                    <div class="col-12">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                            Upload Resource
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+            </form>
+
+
+            <div
+                id="uploadMessage"
+                class="mt-3">
+            </div>
+
+
+        </section>
+
+
+
+        <!-- Pending -->
+
+        <section
+            id="pending"
+            class="dashboard-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h3>
+                        ⏳ Pending Resources
+                    </h3>
+
+                    <p>
+                        Review resources submitted by students.
+                    </p>
+
+                </div>
+
+                <span
+                    id="pendingCount"
+                    class="status-badge pending">
+
+                    0 Pending
+
+                </span>
+
+            </div>
+
+
+            <div
+                id="message">
+            </div>
+
+
+            <div
+                id="loading"
+                class="loading">
+
+                Loading pending resources...
+
+            </div>
+
+
+            <div
+                id="resourcesContainer"
+                class="resource-grid">
+            </div>
+
+
+            <div
+                id="noResources"
+                class="empty-state">
+
+                <div class="empty-icon">
+                    📭
+                </div>
+
+                <h5>
+                    No Pending Resources
+                </h5>
+
+                <p>
+                    There are no resources waiting for approval.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- Approved -->
+
+        <section
+            id="approved"
+            class="dashboard-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h3>
+                        ✅ Approved Resources
+                    </h3>
+
+                    <p>
+                        Resources currently available to students.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="approvedResourcesContainer"
+                class="resource-grid">
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- Rejected -->
+
+        <section
+            id="rejected"
+            class="dashboard-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h3>
+                        ❌ Rejected Resources
+                    </h3>
+
+                    <p>
+                        Resources that were rejected during review.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="rejectedResourcesContainer"
+                class="resource-grid">
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- Ratings -->
+
+        <section
+            id="ratings"
+            class="dashboard-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h3>
+                        ⭐ Ratings
+                    </h3>
+
+                    <p>
+                        Monitor ratings given to resources.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="ratingsContainer"
+                class="resource-grid">
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- Users -->
+
+        <section
+            id="users"
+            class="dashboard-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h3>
+                        👥 Users
+                    </h3>
+
+                    <p>
+                        Manage registered Student Hub users.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="usersContainer">
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<script src="./admin.js"></script>
+
+
+</body>
+
+</html>

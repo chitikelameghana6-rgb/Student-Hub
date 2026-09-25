@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>Student Hub - Dashboard</title>
+
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+<link
+    rel="stylesheet"
+    href="dashboard.css">
+
+
+</head>
+
+<body>
+
+```
+<!-- Top Navbar -->
+
+<nav class="topbar">
+
+    <div class="brand">
+        Student Hub
+    </div>
+
+    <div class="topbar-actions">
+
+        <span class="student-label">
+            Student Dashboard
+        </span>
+
+        <button
+            id="logoutBtn"
+            class="logout-btn">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- Main Layout -->
+
+<div class="dashboard-layout">
+
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-title">
+            Student Panel
+        </div>
+
+
+        <a
+            href="dashboard.html"
+            class="sidebar-link active">
+
+            <span>🏠</span>
+            Dashboard
+
+        </a>
+
+
+        <a
+            href="resources.html"
+            class="sidebar-link">
+
+            <span>📚</span>
+            Browse Resources
+
+        </a>
+
+
+        <a
+            href="upload.html"
+            class="sidebar-link">
+
+            <span>⬆️</span>
+            Upload Resource
+
+        </a>
+
+
+        <a
+            href="#myResourcesSection"
+            class="sidebar-link">
+
+            <span>📤</span>
+            My Resources
+
+        </a>
+
+
+        <a
+            href="#downloadHistorySection"
+            class="sidebar-link">
+
+            <span>📥</span>
+            Download History
+
+        </a>
+
+
+        <a
+            href="#ratingsSection"
+            class="sidebar-link">
+
+            <span>⭐</span>
+            My Ratings
+
+        </a>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                id="sidebarLogoutBtn"
+                class="sidebar-logout">
+
+                🚪 Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+
+        <!-- Header -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>
+                    My Dashboard
+                </h1>
+
+                <p>
+                    Manage your resources, downloads and ratings from one place.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Message -->
+
+        <div id="message"></div>
+
+
+        <!-- Summary Cards -->
+
+        <div class="summary-grid">
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon uploaded-icon">
+                    📤
+                </div>
+
+                <div>
+
+                    <p>
+                        Total Uploaded
+                    </p>
+
+                    <h2 id="totalUploaded">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon approved-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <p>
+                        Approved
+                    </p>
+
+                    <h2 id="totalApproved">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon pending-icon">
+                    ⏳
+                </div>
+
+                <div>
+
+                    <p>
+                        Pending
+                    </p>
+
+                    <h2 id="totalPending">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon download-icon">
+                    📥
+                </div>
+
+                <div>
+
+                    <p>
+                        Downloads
+                    </p>
+
+                    <h2 id="totalDownloads">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Quick Actions -->
+
+        <section class="content-card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h3>
+                        Quick Actions
+                    </h3>
+
+                    <p>
+                        Quickly access the most useful Student Hub features.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+
+                <a
+                    href="resources.html"
+                    class="action-card">
+
+                    <div class="action-icon">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Browse Resources
+                        </h4>
+
+                        <p>
+                            Explore notes, PPTs and study materials.
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="upload.html"
+                    class="action-card">
+
+                    <div class="action-icon">
+                        ⬆️
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Upload Resource
+                        </h4>
+
+                        <p>
+                            Share useful study materials with students.
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="#myResourcesSection"
+                    class="action-card">
+
+                    <div class="action-icon">
+                        📤
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            My Resources
+                        </h4>
+
+                        <p>
+                            Check your uploaded resources and status.
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- My Uploaded Resources -->
+
+        <section
+            id="myResourcesSection"
+            class="content-card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h3>
+                        My Uploaded Resources
+                    </h3>
+
+                    <p>
+                        Resources you have shared with Student Hub.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="loading"
+                class="loading">
+
+                Loading your resources...
+
+            </div>
+
+
+            <div
+                id="myResourcesContainer"
+                class="resource-grid">
+            </div>
+
+
+            <div
+                id="noResources"
+                class="empty-state d-none">
+
+                You have not uploaded any resources yet.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Download History -->
+
+        <section
+            id="downloadHistorySection"
+            class="content-card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h3>
+                        Download History
+                    </h3>
+
+                    <p>
+                        Resources you have downloaded.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="downloadLoading"
+                class="loading">
+
+                Loading download history...
+
+            </div>
+
+
+            <div
+                id="downloadHistoryContainer"
+                class="resource-grid">
+            </div>
+
+
+            <div
+                id="noDownloads"
+                class="empty-state d-none">
+
+                You have not downloaded any resources yet.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- My Ratings -->
+
+        <section
+            id="ratingsSection"
+            class="content-card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h3>
+                        My Ratings
+                    </h3>
+
+                    <p>
+                        Resources you have rated.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="ratingsLoading"
+                class="loading">
+
+                Loading your ratings...
+
+            </div>
+
+
+            <div
+                id="myRatingsContainer"
+                class="resource-grid">
+            </div>
+
+
+            <div
+                id="noRatings"
+                class="empty-state d-none">
+
+                You have not rated any resources yet.
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script src="dashboard.js"></script>
+```
+
+</body>
+
+</html>
