@@ -1,11 +1,10 @@
 {
-  "name": "backend",
+  "name": "student-hub",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "Student Hub Backend",
+  "main": "backend/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node backend/server.js"
   },
   "keywords": [],
   "author": "",
